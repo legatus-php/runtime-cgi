@@ -1,0 +1,43 @@
+{
+    "name": "legatus/runtime-cgi",
+    "description": "Run your PHP application behind a FastCGI proxy",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matias Navarro Carter",
+            "email": "contact@mnavarro.dev"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "Legatus\\Support\\": ["src"]
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Legatus\\Support\\": ["tests"]
+        }
+    },
+    "require": {
+        "php": ">=7.4",
+        "legatus/runtime": "^0.1.0",
+        "nyholm/psr7-server": "^1.0",
+        "http-interop/response-sender": "^1.0",
+        "psr/http-server-handler": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0",
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "vimeo/psalm": "^3.7"
+    },
+    "scripts": {
+        "lint": "php-cs-fixer fix --ansi",
+        "pr": [
+            "php-cs-fixer fix --dry-run -vvv",
+            "psalm --no-cache --stats",
+            "XDEBUG_MODE=coverage phpunit --testdox --coverage-text"
+        ]
+    }
+}
